@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>QRoom - History</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "background": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbc8",
+                        "on-primary-container": "#5c2800",
+                        "on-primary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "secondary-container": "#e2dfde",
+                        "on-background": "#1a1c1c",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#994700",
+                        "tertiary": "#5c5f60",
+                        "surface-container-highest": "#e2e2e2",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadada",
+                        "on-primary-fixed": "#321200",
+                        "secondary": "#5f5e5e",
+                        "primary": "#994700",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary-container": "#9ea0a2",
+                        "inverse-on-surface": "#f0f1f1",
+                        "primary-fixed-dim": "#ffb68b",
+                        "inverse-primary": "#ffb68b",
+                        "on-tertiary-container": "#343739",
+                        "on-secondary-container": "#636262",
+                        "tertiary-fixed-dim": "#c5c6c8",
+                        "outline": "#8c7263",
+                        "outline-variant": "#e0c0af",
+                        "primary-container": "#ff7a00",
+                        "on-primary-fixed-variant": "#753400",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#584235",
+                        "tertiary-fixed": "#e1e2e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "base": "4px",
+                        "3xl": "64px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .active-pill {
+            background-color: #ff7a00;
+            color: white;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-surface fixed top-0 w-full z-50 flat no shadows">
+        <div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto h-16">
+            <div class="flex items-center gap-md">
+                <span class="font-headline-md text-headline-md font-bold text-primary">QRoom</span>
+            </div>
+            <div class="flex items-center gap-sm">
+                <nav class="hidden md:flex gap-lg mr-xl">
+                    <a class="font-label-md text-label-md text-primary hover:opacity-80 transition-opacity" href="index.html">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 pb-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+
+        <div class="mb-lg">
+            <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">History</h1>
+            <p class="font-body-md text-body-md text-secondary mt-xs">Review your past shared dining experiences.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-md mb-xl">
+            <div class="relative flex-grow">
+                <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-secondary">search</span>
+                <input class="w-full pl-12 pr-md py-3 rounded-2xl border border-surface-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" placeholder="Search sessions..." type="text">
+            </div>
+            <div class="flex gap-sm overflow-x-auto pb-xs no-scrollbar">
+                <button id="allBtn" class="active-pill px-lg py-2 rounded-2xl font-label-md text-label-md whitespace-nowrap shadow-sm hover:opacity-90 transition-all">All Time</button>
+                <button id="weekBtn" class="bg-surface-container-lowest border border-surface-variant px-lg py-2 rounded-2xl font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-all">Last 7 days</button>
+                <button id="monthBtn" class="bg-surface-container-lowest border border-surface-variant px-lg py-2 rounded-2xl font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-all">Last 30 days</button>
+            </div>
+        </div>
+
+        <div id="historyList" class="space-y-md"></div>
+
+        <div class="mt-2xl flex justify-center items-center gap-md">
+            <button id="prevPage" class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center text-secondary hover:bg-surface-container-low transition-all">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <span id="pageInfo" class="font-label-md text-label-md text-on-surface">Page 1 of 1</span>
+            <button id="nextPage" class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center text-secondary hover:bg-surface-container-low transition-all">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="bg-surface-container-lowest border-t border-surface-variant mt-3xl">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-lg">
+                <div class="flex flex-col items-center md:items-start gap-xs">
+                    <span class="font-headline-md text-headline-md font-bold text-primary">QRoom</span>
+                    <span class="font-label-sm text-label-sm text-secondary">&copy; 2026 QRoom. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.rounded-2xl').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.classList.add('scale-95');
+                card.classList.add('duration-150');
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('scale-95');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-95');
+            });
+        });
+
+        const filterButtons = document.querySelectorAll('.flex.gap-sm button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('active-pill');
+                    b.classList.add('bg-surface-container-lowest', 'border', 'border-surface-variant');
+                });
+                btn.classList.add('active-pill');
+                btn.classList.remove('bg-surface-container-lowest', 'border', 'border-surface-variant');
+            });
+        });
+    </script>
+
+    <script>
+        function rupiah(num) {
+            return "Rp " + num.toLocaleString("id-ID");
+        }
+
+        const history = JSON.parse(localStorage.getItem("historyData")) || [];
+        const container = document.getElementById("historyList");
+
+        let currentPage = 1;
+        const perPage = 5;
+        let currentData = history;
+
+        function parseIndonesianDate(dateStr) {
+            if (!dateStr) return new Date();
+            const parts = dateStr.split('/');
+            if (parts.length === 3) {
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            return new Date(dateStr);
+        }
+
+        function renderHistory(data) {
+            container.innerHTML = "";
+
+            if (data.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-2xl p-8 text-center text-secondary">
+                        Belum ada riwayat transaksi yang cocok
+                    </div>
+                `;
+                document.getElementById("pageInfo").innerText = "Page 1 of 1";
+                return;
+            }
+
+            const start = (currentPage - 1) * perPage;
+            const end = start + perPage;
+            const pageData = data.slice(start, end);
+
+            pageData.forEach((item) => {
+                container.innerHTML += `
+                    <div onclick="openHistory(${item.id})" class="bg-surface-container-lowest rounded-2xl p-md shadow-sm mb-4 cursor-pointer hover:scale-[1.01] transition hover:shadow-md">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-on-surface">${item.roomName}</h3>
+                                <p class="text-xs text-secondary mt-1">${item.date}</p>
+                            </div>
+                        </div>
+                        <div class="mt-md flex justify-between items-center pt-sm border-t border-surface-variant/20">
+                            <span class="text-xs font-medium text-secondary">
+                                ${item.users ? item.users.length : 1} Anggota
+                            </span>
+                            <div class="text-right">
+                                <span class="text-primary font-bold">${rupiah(item.total)}</span>
+                                <p class="text-[10px] text-secondary">Klik untuk lihat nota</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const totalPage = Math.ceil(data.length / perPage) || 1;
+            document.getElementById("pageInfo").innerText = `Page ${currentPage} of ${totalPage}`;
+        }
+
+        renderHistory(history);
+
+        function openHistory(id) {
+            const history = JSON.parse(localStorage.getItem("historyData")) || [];
+            const selected = history.find(item => item.id === id);
+
+            if (!selected) {
+                alert("Nota tidak ditemukan");
+                return;
+            }
+
+            localStorage.setItem("roomData", JSON.stringify(selected.roomData));
+            window.location.href = "nota.html";
+        }
+
+        function applyFilterAndSearch(days = 0) {
+            const searchInput = document.querySelector('input[placeholder="Search sessions..."]');
+            const keyword = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+            const now = new Date();
+            now.setHours(23, 59, 59, 999);
+
+            const filtered = history.filter((item) => {
+                const matchKeyword = item.roomName.toLowerCase().includes(keyword);
+
+                if (days === 0) return matchKeyword;
+
+                const itemDate = parseIndonesianDate(item.date);
+                const diffTime = Math.abs(now - itemDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                return matchKeyword && (diffDays <= days);
+            });
+
+            currentPage = 1;
+            currentData = filtered;
+            renderHistory(filtered);
+        }
+
+        const searchField = document.querySelector('input[placeholder="Search sessions..."]');
+        if (searchField) {
+            searchField.addEventListener('input', () => {
+                let activeDays = 0;
+                if (document.getElementById("weekBtn").classList.contains('active-pill')) activeDays = 7;
+                if (document.getElementById("monthBtn").classList.contains('active-pill')) activeDays = 30;
+
+                applyFilterAndSearch(activeDays);
+            });
+        }
+
+        allBtn.onclick = () => applyFilterAndSearch(0);
+        weekBtn.onclick = () => applyFilterAndSearch(7);
+        monthBtn.onclick = () => applyFilterAndSearch(30);
+
+        prevPage.onclick = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderHistory(currentData);
+            }
+        };
+
+        nextPage.onclick = () => {
+            const totalPage = Math.ceil(currentData.length / perPage);
+            if (currentPage < totalPage) {
+                currentPage++;
+                renderHistory(currentData);
+            }
+        }; 
+    </script>
+</body>
+
+</html>

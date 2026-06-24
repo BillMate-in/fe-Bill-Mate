@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .receipt-edge {
+      background-image: radial-gradient(circle, transparent, transparent 50%, #ffffff 50%, #ffffff 100%);
+      background-size: 20px 20px;
+      background-position: bottom left;
+      background-repeat: repeat-x;
+    }
+
+    .receipt-dashed-line {
+      border-top: 2px dashed #e2e2e2;
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#584235",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e2e2e2",
+            "secondary-fixed": "#e5e2e1",
+            "surface": "#f9f9f9",
+            "on-tertiary-fixed-variant": "#444749",
+            "on-primary-fixed": "#321200",
+            "inverse-on-surface": "#f0f1f1",
+            "on-primary-container": "#5c2800",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb68b",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "secondary-container": "#e2dfde",
+            "on-primary-fixed-variant": "#753400",
+            "tertiary-fixed": "#e1e2e4",
+            "on-tertiary-container": "#343739",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#1c1b1b",
+            "surface-bright": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "tertiary-fixed-dim": "#c5c6c8",
+            "secondary-fixed-dim": "#c8c6c5",
+            "on-secondary-fixed-variant": "#474746",
+            "on-secondary-container": "#636262",
+            "surface-container-highest": "#e2e2e2",
+            "on-tertiary-fixed": "#191c1e",
+            "primary-container": "#ff7a00",
+            "surface-container-low": "#f3f3f4",
+            "tertiary": "#5c5f60",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#dadada",
+            "outline": "#8c7263",
+            "outline-variant": "#e0c0af",
+            "primary": "#994700",
+            "inverse-surface": "#2f3131",
+            "secondary": "#5f5e5e",
+            "on-error": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "surface-container-high": "#e8e8e8",
+            "inverse-primary": "#ffb68b",
+            "tertiary-container": "#9ea0a2",
+            "on-background": "#1a1c1c",
+            "surface-tint": "#994700",
+            "on-secondary": "#ffffff",
+            "background": "#f9f9f9",
+            "primary-fixed": "#ffdbc8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "base": "4px",
+            "xl": "32px",
+            "container-max": "1200px",
+            "sm": "8px",
+            "2xl": "48px",
+            "margin-mobile": "16px",
+            "md": "16px",
+            "xs": "4px",
+            "3xl": "64px",
+            "gutter": "16px",
+            "margin-desktop": "32px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "display-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+
+<body class="bg-surface">
+
+  <header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-50">
+    <div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+      <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">
+        QRoom
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[480px] mx-auto px-margin-mobile pt-lg pb-3xl">
+
+    <div class="flex flex-col items-center text-center mb-xl">
+      <div class="w-16 h-16 bg-[#D1FAE5] rounded-full flex items-center justify-center mb-md shadow-sm">
+        <span class="material-symbols-outlined text-[#059669] text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      </div>
+      <h1 class="font-headline-md text-headline-md text-on-surface mb-xs">Hitung Selesai!</h1>
+      <p class="font-body-md text-body-md text-secondary">Berikut rincian pembayaran untuk QRoom ini</p>
+    </div>
+
+    <div class="bg-surface-container-lowest rounded-2xl shadow-md overflow-hidden relative border border-surface-variant">
+
+      <div class="h-2 bg-primary-container w-full"></div>
+      <div class="p-lg">
+
+        <div class="flex justify-between items-center mb-lg">
+          <div>
+            <p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Transaction ID</p>
+            <p class="font-label-md text-label-md text-on-surface">#QR-2024-9982</p>
+          </div>
+          <div class="text-right">
+            <p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Date</p>
+            <p id="transactionDate" class="font-label-md text-label-md text-on-surface"></p>
+          </div>
+        </div>
+        <div class="receipt-dashed-line mb-lg"></div>
+
+        <div id="receiptItems" class="space-y-xl"></div>
+        <div class="receipt-dashed-line my-lg"></div>
+
+        <div class="space-y-sm mb-lg">
+          <div class="flex justify-between text-secondary">
+            <span>Subtotal</span>
+            <span id="subtotalBill">Rp 0</span>
+          </div>
+
+          <div class="flex justify-between text-secondary">
+            <span>Tax</span>
+            <span id="taxBill">Rp 0</span>
+          </div>
+
+          <div class="flex justify-between text-secondary">
+            <span>Discount</span>
+            <span id="discountBill">- Rp 0</span>
+          </div>
+
+          <div class="flex justify-between text-secondary">
+            <span>Fees</span>
+            <span id="feesBill">Rp 0</span>
+          </div>
+        </div>
+
+        <div class="receipt-dashed-line my-lg"></div>
+
+        <div class="flex justify-between items-center mb-md">
+          <span class="font-headline-md text-headline-md text-on-surface">Total Bill</span>
+          <span id="totalBill" class=" font-headline-md text-headline-md text-primary">Rp 0</span>
+        </div>
+      </div>
+
+      <div class="bg-primary-container/10 border-t border-primary-container/20 p-lg mx-md mb-lg rounded-xl">
+        <div class="flex items-start gap-md">
+          <span class="material-symbols-outlined text-primary mt-1">account_balance_wallet</span>
+          <div class="flex-1">
+            <p id="hostTransfer" class="font-label-md text-label-md text-on-primary-container mb-sm">
+              Transfer ke Host
+            </p>
+            <div class="space-y-sm">
+              <div class="flex justify-between items-center bg-white p-sm rounded-lg border border-primary-container/20 shadow-sm">
+                <span id="rekeningText" class="font-label-md text-label-md font-bold text-on-surface">
+                  -
+                </span>
+                <button class="text-primary material-symbols-outlined text-sm hover:opacity-70 transition-opacity">content_copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-4 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+    </div>
+
+    <div class="mt-xl space-y-md">
+      <button onclick="shareWhatsApp()" class="w-full bg-[#25D366] text-white font-label-md py-md rounded-2xl shadow-md hover:opacity-90">
+        <div class="flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined">
+            share
+          </span>
+          Kirim ke WhatsApp
+        </div>
+      </button>
+      <button onclick="window.location.href='history.html'" class="w-full bg-surface-container-high text-on-surface font-label-md py-md rounded-2xl shadow-sm hover:bg-surface-variant">
+        Selesai & Keluar
+      </button>
+
+      <p class="text-center text-sm text-secondary">
+        Data bill otomatis tersimpan di History.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant mt-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
+      <div class="flex flex-col items-center md:items-start"><span class="font-label-md text-label-md font-bold text-primary mb-1">QRoom</span>
+        <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">&copy; 2026 QRoom. All rights reserved.</p>
+      </div>
+      <div class="flex gap-lg"><a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a><a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a><a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Help Center</a></div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('button.material-symbols-outlined').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const originalIcon = this.textContent;
+        this.textContent = 'check';
+        this.classList.add('text-green-600');
+        setTimeout(() => {
+          this.textContent = originalIcon;
+          this.classList.remove('text-green-600');
+        }, 1500);
+      });
+    });
+  </script>
+  <script>
+    const roomData = JSON.parse(localStorage.getItem("roomData"));
+
+    function rupiah(num) {
+      return "Rp " + num.toLocaleString("id-ID");
+    }
+
+    function renderReceipt() {
+      const container = document.getElementById("receiptItems");
+      container.innerHTML = "";
+
+      if (!roomData || !roomData.items || roomData.items.length === 0) {
+        container.innerHTML = `
+            <p class="text-secondary text-center">
+                Belum ada transaksi
+            </p>
+        `;
+        return;
+      }
+
+      const subtotal = roomData.items.reduce((sum, item) => sum + item.price, 0);
+      const tax = subtotal * ((roomData.tax || 0) / 100);
+      const fee = roomData.fee || 0;
+      const discount = roomData.discount || 0;
+
+      const userBills = {};
+
+      roomData.items.forEach((item) => {
+        if (!userBills[item.user]) {
+          userBills[item.user] = {
+            foods: [],
+            subtotal: 0
+          };
+        }
+        userBills[item.user].foods.push(item);
+        userBills[item.user].subtotal += item.price;
+      });
+
+      Object.keys(userBills).forEach((user) => {
+        const person = userBills[user];
+        const ratio = person.subtotal / subtotal;
+
+        const finalTotal = person.subtotal + (tax * ratio) + (fee * ratio) - (discount * ratio);
+
+        container.innerHTML += `
+            <div class="mb-4">
+                <div class="flex justify-between font-bold mb-2">
+                    <span>${user}</span>
+                    <span class="text-primary">${rupiah(Math.round(finalTotal))}</span>
+                </div>
+                <ul class="ml-3 pl-3 border-l">
+                    ${person.foods.map(food => `
+                        <li class="flex justify-between text-sm text-secondary">
+                            <span>${food.food}</span>
+                            <span>${rupiah(food.price)}</span>
+                        </li>
+                    `).join("")}
+                </ul>
+            </div>
+        `;
+      });
+    }
+
+    function renderTotal() {
+      const subtotal = roomData.items.reduce((a, b) => a + b.price, 0);
+      const tax = subtotal * ((roomData.tax || 0) / 100);
+      const discount = roomData.discount || 0;
+      const fee = roomData.fee || 0;
+      const total = subtotal + tax + fee - discount;
+
+      document.getElementById("subtotalBill").innerText = rupiah(subtotal);
+      document.getElementById("taxBill").innerText = rupiah(tax);
+      document.getElementById("discountBill").innerText = "- " + rupiah(discount);
+      document.getElementById("feesBill").innerText = rupiah(fee);
+      document.getElementById("totalBill").innerText = rupiah(total);
+    }
+
+    renderReceipt();
+
+    function saveToHistory() {
+      let history = JSON.parse(localStorage.getItem("historyData")) || [];
+      const subtotal = roomData.items.reduce((sum, item) => sum + item.price, 0);
+      const tax = subtotal * (roomData.tax || 0) / 100;
+      const total = subtotal + tax + (roomData.fee || 0) - (roomData.discount || 0);
+
+      const data = {
+        id: Date.now(),
+        roomName: roomData.roomName,
+        date: new Date().toLocaleDateString("id-ID"),
+        users: roomData.users,
+        total,
+        roomData: JSON.parse(JSON.stringify(roomData))
+      };
+
+      const alreadyExist = history.some(item =>
+        item.date === data.date && item.roomName === data.roomName
+      );
+
+      if (!alreadyExist) {
+        history.unshift(data);
+        localStorage.setItem("historyData", JSON.stringify(history));
+      }
+    }
+
+    renderTotal();
+
+    document.getElementById("hostTransfer").innerText = `Transfer ke Host (${roomData.host})`;
+    document.getElementById("rekeningText").innerText = roomData.rekening;
+
+    saveToHistory();
+    document.getElementById("transactionDate").innerText = new Date().toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+  </script>
+  <script>
+    function shareWhatsApp() {
+      let text = `🍜 ${roomData.roomName}\n\n🧾 RINCIAN BILL\n━━━━━━━━━━\n\n`;
+
+      const subtotal = roomData.items.reduce((sum, item) => sum + item.price, 0);
+      const tax = subtotal * ((roomData.tax || 0) / 100);
+      const fee = roomData.fee || 0;
+      const discount = roomData.discount || 0;
+
+      const userBills = {};
+
+      roomData.items.forEach(item => {
+        if (!userBills[item.user]) {
+          userBills[item.user] = {
+            items: [],
+            subtotal: 0
+          };
+        }
+        userBills[item.user].items.push(item);
+        userBills[item.user].subtotal += item.price;
+      });
+
+      Object.keys(userBills).forEach(user => {
+        const person = userBills[user];
+        const ratio = person.subtotal / subtotal;
+        const total = Math.round(person.subtotal + (tax * ratio) + (fee * ratio) - (discount * ratio));
+
+        text += `👤 ${user}\n`;
+        person.items.forEach(item => {
+          text += `• ${item.food}\n  ${rupiah(item.price)}\n`;
+        });
+        text += `Total → ${rupiah(total)}\n\n`;
+      });
+
+      const grand = subtotal + tax + fee - discount;
+
+      text += `━━━━━━━━━━\n`;
+      text += `Subtotal : ${rupiah(subtotal)}\n`;
+      text += `Tax : ${rupiah(tax)}\n`;
+      text += `Diskon : -${rupiah(discount)}\n`;
+      text += `Fee : ${rupiah(fee)}\n\n`;
+      text += `GRAND TOTAL\n${rupiah(grand)}\n\n`;
+      text += `Transfer:\n${roomData.rekening}\n\n`;
+      text += `Terima kasih`;
+
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+    }
+  </script>
+</body>
+
+</html>

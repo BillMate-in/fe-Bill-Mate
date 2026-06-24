@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>QRoom Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#584235",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-primary-fixed": "#321200",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-container": "#5c2800",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#e2dfde",
+                        "on-primary-fixed-variant": "#753400",
+                        "tertiary-fixed": "#e1e2e4",
+                        "on-tertiary-container": "#343739",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "tertiary-fixed-dim": "#c5c6c8",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-secondary-container": "#636262",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#191c1e",
+                        "primary-container": "#ff7a00",
+                        "surface-container-low": "#f3f3f4",
+                        "tertiary": "#5c5f60",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "outline": "#8c7263",
+                        "outline-variant": "#e0c0af",
+                        "primary": "#994700",
+                        "inverse-surface": "#2f3131",
+                        "secondary": "#5f5e5e",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-primary": "#ffb68b",
+                        "tertiary-container": "#9ea0a2",
+                        "on-background": "#1a1c1c",
+                        "surface-tint": "#994700",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "primary-fixed": "#ffdbc8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "container-max": "1200px",
+                        "sm": "8px",
+                        "2xl": "48px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "3xl": "64px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .card-shadow {
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .floating-shadow {
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-active:active {
+            transform: scale(0.95);
+            transition: transform 0.15s ease;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-50">
+        <div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+            <div class="flex items-center gap-sm">
+                <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">QRoom</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col md:flex-row w-full max-w-[1440px] mx-auto overflow-hidden">
+
+        <section class="w-full md:w-[60%] p-md md:p-lg bg-surface-container-lowest overflow-y-auto no-scrollbar">
+            <div class="flex flex-col gap-lg">
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 id="roomTitle" class="font-headline-lg text-headline-lg text-on-surface">
+                            QRoom
+                        </h1>
+                    </div>
+                    <button onclick="joinFake()" class="btn-active flex items-center gap-xs px-md py-sm bg-secondary-container rounded-2xl">
+                        <span class="material-symbols-outlined">
+                            group_add
+                        </span>
+                        Tambah Member
+                    </button>
+                </div>
+
+                <div class="bg-surface-container-low p-md rounded-2xl flex flex-wrap gap-md items-end">
+                    <div class="flex-1 min-w-[200px] flex flex-col gap-xs">
+                        <label class="font-label-sm text-label-sm text-secondary">Food/Drink Name</label>
+                        <input id="foodInput" class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl px-md py-sm focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all" placeholder="e.g. Bakso Urat" type="text">
+                    </div>
+                    <div class="w-full md:w-[150px] flex flex-col gap-xs"><label class="font-label-sm text-label-sm text-secondary">Price</label>
+                        <div class="relative">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 font-label-md text-secondary">Rp</span>
+                            <input id="priceInput" class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl pl-12 pr-md py-sm focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all font-label-md text-on-surface" placeholder="0" type="number">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-[180px] flex flex-col gap-xs">
+                        <label class="font-label-sm text-label-sm text-secondary">User</label>
+                        <select id="userInput"></select>
+                    </div>
+                    <button onclick="addItem()" class="btn-active w-12 h-12 flex items-center justify-center bg-primary-container text-white rounded-2xl floating-shadow">
+                        <span class="material-symbols-outlined text-[28px]">add</span>
+                    </button>
+                </div>
+
+                <div class="flex flex-col gap-sm">
+                    <div class="flex justify-between items-center px-xs">
+                        <h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">
+                            Active Items
+                        </h3>
+                        <span class="font-label-sm text-label-sm text-secondary">
+                            Item akan muncul di sini
+                        </span>
+                    </div>
+                    <div id="itemList" class="space-y-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="w-full md:w-[40%] bg-surface-container-low p-md md:p-lg flex flex-col gap-lg border-l border-surface-variant/30">
+
+            <div id="roomMembers" class="flex flex-wrap gap-sm">
+                <p class="text-secondary">
+                    Belum ada anggota
+                </p>
+            </div>
+
+            <div class="bg-surface-container-lowest p-md rounded-2xl floating-shadow space-y-md">
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-sm text-label-sm text-secondary">Tax (PPN %)</label>
+                    <div class="relative">
+                        <span class="absolute right-md top-1/2 -translate-y-1/2 font-label-md text-secondary">%</span>
+                        <input id="taxInput" class="w-full bg-surface-container-low border border-surface-variant rounded-xl px-md py-sm focus:ring-2 focus:ring-primary-container outline-none transition-all" type="number" value="0">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-xs"><label class="font-label-sm text-label-sm text-secondary">Shop Discount</label>
+                    <div class="relative">
+                        <span class="absolute left-md top-1/2 -translate-y-1/2 font-label-md text-secondary">Rp</span>
+                        <input id="discountInput" class="w-full bg-surface-container-low border border-surface-variant rounded-xl pl-12 pr-md py-sm focus:ring-2 focus:ring-primary-container outline-none transition-all" type="number" value="0">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-sm text-label-sm text-secondary">Extra Fees (Delivery/Parking)</label>
+                    <div class="relative">
+                        <span class="absolute left-md top-1/2 -translate-y-1/2 font-label-md text-secondary">Rp</span>
+                        <input id="extraFee" class="w-full bg-surface-container-low border border-surface-variant rounded-xl pl-12 pr-md py-sm focus:ring-2 focus:ring-primary-container outline-none transition-all" type="number" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-lg space-y-lg">
+                <div class="space-y-sm">
+                    <div class="flex justify-between font-body-md text-body-md text-secondary">
+                        <span class="">Subtotal</span>
+                        <span id="subtotal">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between font-body-md text-body-md text-secondary">
+                        <span class="">Total Tax</span>
+                        <span id="tax">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between font-body-md text-body-md text-secondary">
+                        <span class="">Fees</span>
+                        <span id="fees">Rp 0</span>
+                    </div>
+                    <div class="pt-sm border-t border-surface-variant flex justify-between items-center">
+                        <span class="font-headline-md text-headline-md text-on-surface">Grand Total</span>
+                        <span id="grandTotal" class="font-display-lg text-[32px] text-primary font-extrabold">Rp 0</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-sm">
+                    <button id="lockRoomBtn" class="btn-active w-full bg-[#10B981] hover:bg-[#059669] text-white font-headline-md text-headline-md py-lg rounded-2xl flex items-center justify-center gap-md floating-shadow">
+                        <span class="material-symbols-outlined">lock</span>
+                        Selesai & Kunci Room
+                    </button>
+                    <p class="text-center font-label-sm text-label-sm text-secondary">No one can edit items after locking.</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
+            <div class="flex flex-col gap-xs items-center md:items-start">
+                <span class="font-label-md text-label-md font-bold text-primary">QRoom</span>
+                <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">&copy; 2026 QRoom. All rights reserved.</p>
+            </div>
+            <div class="flex gap-lg">
+                <a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function (e) {
+                const x = e.clientX - e.target.offsetLeft;
+                const y = e.clientY - e.target.offsetTop;
+                const ripples = document.createElement('span');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                this.appendChild(ripples);
+                setTimeout(() => { ripples.remove() }, 1000);
+            });
+        });
+    </script>
+
+    <script>
+        let roomData = JSON.parse(localStorage.getItem("roomData"));
+
+        if (!roomData) {
+            roomData = {
+                roomName: "-",
+                host: "Host",
+                rekening: "-",
+                users: ["Host"],
+                items: [],
+                tax: 0,
+                discount: 0,
+                fee: 0
+            };
+        }
+
+        function rupiah(num) {
+            return "Rp " + num.toLocaleString("id-ID");
+        }
+
+        function renderRoomMembers() {
+            const memberBox = document.getElementById("roomMembers");
+            memberBox.innerHTML = "";
+
+            roomData.users.forEach((user) => {
+                memberBox.innerHTML += `
+                <div class="px-4 py-2 bg-primary-fixed rounded-full">
+                    ${user}
+                </div>
+            `;
+            });
+        }
+
+        function renderUsers() {
+            const select = document.getElementById("userInput");
+            select.innerHTML = "";
+
+            roomData.users.forEach((user) => {
+                select.innerHTML += `
+                <option>${user}</option>
+            `;
+            });
+        }
+
+        function addItem() {
+            const food = document.getElementById("foodInput").value.trim();
+            const price = Number(document.getElementById("priceInput").value);
+            const user = document.getElementById("userInput").value;
+
+            if (food === "" || price <= 0) {
+                alert("Isi makanan dan harga dulu");
+                return;
+            }
+
+            roomData.items.push({
+                food,
+                price,
+                user,
+                qty: 1
+            });
+
+            renderItems();
+            updateTotal();
+
+            document.getElementById("foodInput").value = "";
+            document.getElementById("priceInput").value = "";
+        }
+
+        function renderItems() {
+            const list = document.getElementById("itemList");
+            list.innerHTML = "";
+
+            roomData.items.forEach((item) => {
+                list.innerHTML += `
+                <div class="bg-surface-container-lowest p-md rounded-2xl card-shadow border border-surface-variant/30 flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">${item.food}</p>
+                        <div class="flex gap-sm mt-1">
+                            <span class="bg-primary-fixed px-2 py-1 rounded-full">${item.user}</span>
+                            <span class="text-primary font-semibold">${rupiah(item.price)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            });
+        }
+
+        function updateTotal() {
+            const subtotal = roomData.items.reduce((total, item) => total + item.price, 0);
+            const taxPercent = Number(document.getElementById("taxInput").value || 0);
+            const discount = Number(document.getElementById("discountInput").value || 0);
+            const fee = Number(document.getElementById("extraFee").value || 0);
+
+            const tax = subtotal * (taxPercent / 100);
+            const grand = subtotal + tax + fee - discount;
+
+            document.getElementById("subtotal").innerText = rupiah(subtotal);
+            document.getElementById("tax").innerText = rupiah(tax);
+            document.getElementById("fees").innerText = rupiah(fee);
+            document.getElementById("grandTotal").innerText = rupiah(grand);
+
+            roomData.tax = taxPercent;
+            roomData.discount = discount;
+            roomData.fee = fee;
+        }
+
+        document.getElementById("taxInput").addEventListener("input", updateTotal);
+        document.getElementById("discountInput").addEventListener("input", updateTotal);
+        document.getElementById("extraFee").addEventListener("input", updateTotal);
+
+        function lockRoom() {
+            localStorage.setItem("roomData", JSON.stringify(roomData));
+            window.location.href = "nota.html";
+        }
+
+        document.getElementById("roomTitle").innerText = `QRoom - ${roomData.roomName}`;
+
+        renderRoomMembers();
+        renderUsers();
+
+        document.getElementById("lockRoomBtn").addEventListener("click", lockRoom);
+
+        function joinFake() {
+            const nama = prompt("Nama anggota:");
+            if (!nama) return;
+
+            roomData.users.push(nama);
+            localStorage.setItem("roomData", JSON.stringify(roomData));
+
+            renderUsers();
+            renderRoomMembers();
+        }
+    </script>
+</body>
+
+</html>
