@@ -1,0 +1,23 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+.active-pill {
+    background-color: #ff7a00;
+    color: white;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #1a1c1c;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

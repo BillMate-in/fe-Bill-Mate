@@ -6,8 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/createroom.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -107,38 +108,21 @@
             },
         }
     </script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .form-input-focus:focus {
-            border-color: #ff7a00;
-            outline: none;
-        }
-    </style>
 </head>
 
 <body class="bg-surface text-on-surface min-h-screen flex flex-col">
 
     <header class="bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-50">
         <nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto w-full">
-            <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container cursor-pointer active:scale-95 transition-transform">
+            <div
+                class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container cursor-pointer active:scale-95 transition-transform">
                 QRoom
-            </div>
-            <div class="hidden md:flex items-center space-x-lg">
-                <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-container transition-colors cursor-pointer" href="#">Dashboard</a>
-                <a class="text-primary dark:text-primary-container border-b-2 border-primary font-bold pb-1 cursor-pointer" href="#">Rooms</a>
-                <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary dark:hover:text-primary-container transition-colors cursor-pointer" href="#">History</a>
             </div>
         </nav>
     </header>
 
-    <main class="flex-grow flex items-center justify-center px-margin-mobile py-2xl bg-surface relative overflow-hidden">
+    <main
+        class="flex-grow flex items-center justify-center px-margin-mobile py-2xl bg-surface relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-container rounded-full blur-[120px]"></div>
             <div class="absolute top-1/2 -right-24 w-64 h-64 bg-secondary-container rounded-full blur-[100px]"></div>
@@ -150,21 +134,30 @@
                 <p class="font-body-md text-body-md text-secondary">Set up your group order and invite your friends.</p>
             </div>
 
-            <div class="bg-surface-container-lowest border border-outline-variant shadow-md rounded-2xl p-xl transition-all duration-300 hover:shadow-lg">
+            <div
+                class="bg-surface-container-lowest border border-outline-variant shadow-md rounded-2xl p-xl transition-all duration-300 hover:shadow-lg">
                 <form action="#" class="space-y-lg">
                     <div class="space-y-sm">
-                        <label class="font-label-md text-label-md text-secondary block ml-1" for="host-name">Host Name</label>
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="host-name">Host
+                            Name</label>
                         <div class="relative group">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">person</span>
-                            <input class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-tertiary" id="host-name" placeholder="e.g., Aditya" required="" type="text">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">person</span>
+                            <input
+                                class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-tertiary"
+                                id="host-name" placeholder="e.g., Aditya" required="" type="text">
                         </div>
                     </div>
 
                     <div class="space-y-sm">
-                        <label class="font-label-md text-label-md text-secondary block ml-1" for="restaurant">Restaurant Name</label>
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="restaurant">Restaurant
+                            Name</label>
                         <div class="relative group">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">restaurant</span>
-                            <input class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-tertiary" id="restaurant" placeholder="e.g., Bakso Pak Kirno" required="" type="text">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">restaurant</span>
+                            <input
+                                class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-tertiary"
+                                id="restaurant" placeholder="e.g., Bakso Pak Kirno" required="" type="text">
                         </div>
                     </div>
 
@@ -173,26 +166,33 @@
                             Nomor Rekening
                         </label>
                         <div class="relative group">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary">
                                 account_balance
                             </span>
-                            <input id="rekening" type="text" placeholder="e.g., 123456789" class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg">
+                            <input id="rekening" type="text" placeholder="e.g., 123456789"
+                                class="w-full pl-12 pr-md py-4 bg-surface border border-surface-variant rounded-lg">
                         </div>
                     </div>
 
                     <div class="flex items-center gap-sm bg-primary-fixed text-on-primary-fixed p-md rounded-xl">
-                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+                        <span class="material-symbols-outlined text-primary"
+                            style="font-variation-settings: 'FILL' 1;">info</span>
                         <span class="font-label-sm text-label-sm">Only you can finalize the order as the host.</span>
                     </div>
 
                     <div class="pt-md space-y-md">
-                        <button onclick="createRoom()" class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-label-md text-lg shadow-md hover:shadow-lg hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-sm" type="button">
+                        <button id="btnCreateRoom"
+                            class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-label-md text-lg shadow-md hover:shadow-lg hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-sm"
+                            type="button">
                             <span>Create & Start Ordering</span>
                             <span class="material-symbols-outlined">rocket_launch</span>
                         </button>
 
-                        <a class="w-full flex items-center justify-center gap-xs py-2 text-secondary font-label-md hover:text-primary transition-all group" href="index.html">
-                            <span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">
+                        <a class="w-full flex items-center justify-center gap-xs py-2 text-secondary font-label-md hover:text-primary transition-all group"
+                            href="index.html">
+                            <span
+                                class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">
                                 arrow_back
                             </span>
                             <span>Go Back</span>
@@ -200,70 +200,30 @@
                     </div>
                 </form>
             </div>
-
-            <div class="mt-xl flex flex-col items-center opacity-60">
-                <div class="w-24 h-1 bg-surface-container-high rounded-full mb-md"></div>
-                <div class="flex -space-x-3">
-                    <div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                        <img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv_67R7ZvmQ493tN2GMe6mh8Gt5J5ABC0ZjJif7mS41SYwZdv04R5FzHCRNZDhKpDIQHfVWrn61nMZwzccf59_hmcXDahcrwtPO6euHcYSbmNyZivHdGtv56I_cBy2CyalPdZpDfG64z5ARqCYERBUBTvzy-22NSWet_h757jM9qeKx6cPWF22XtReOQoBpxLrQv7gN6KqxSYfygXujnsjbcyqqGaPm7RzFbnzG7Paq0P0vU-s-NtUSMuIijknW-Jfgn_wcgJRCtg">
-                    </div>
-                    <div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                        <img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlHK5H7XpfwiYayF_jNvFbGQBLOiXkYnyA9-tyUOZQiJoQLUA-FY_l1AG4298-E7MW5WfWdZF2PI9vrW4i3W9io5sjryxLEKdv7Bugkalnlt6aM8PdbPdCLU_Z8RRQRMU8LfRbBLr5zJwjbNRAOretkOJlrxjEDIpDuDEqFDYHOAGR1tAwSuDbHoWDIx91LomdV5Y79QQXBAqLFHoYakMTa5LIuBTnYc78Qb_f7nR8EL-g7sGeqWueOzG0pYYJ_ZEXrg3EvccxtE8">
-                    </div>
-                    <div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                        <img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2bvOnluaQgOC3EpAzvjVy5k_t6BzzIHNZfmyj4rtkpCWwlc6zYtM49EEqwH7yN0-zRVFF0oUvSZD24cM3ILY_wEquNjY9q6cDR4Rb_bWBlqZblDBai29_lNvs8WnBRFWv6o1guPWPJapLaUkKPzWYW4DKN0TcNTR-M3v1QBBCEcprbQNmhptdhXroficSFc1OctPtlh7BDsWRSueKhN82ZXbuYOYPrwW8dwcqFEHpDz8W0BdXv33rkfOkFySGrVn9k7ekDUYMXMM">
-                    </div>
-                    <div class="w-8 h-8 rounded-full border-2 border-surface bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">
-                        +8
-                    </div>
-                </div>
-                <p class="mt-sm font-label-sm text-label-sm text-secondary">Join 2,400+ students splitting bills today</p>
-            </div>
         </div>
     </main>
 
-    <footer class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant transition-colors">
-        <div class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
+    <footer
+        class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant transition-colors">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
             <div class="flex flex-col items-center md:items-start">
                 <span class="font-label-md text-label-md font-bold text-primary mb-1">QRoom</span>
-                <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">© 2026 QRoom. All rights reserved.</p>
+                <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">© 2026 QRoom.
+                    All rights reserved.</p>
             </div>
             <div class="flex gap-lg">
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Help Center</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Help Center</a>
             </div>
         </div>
     </footer>
 
-    <script>
-        function createRoom() {
-            const host = document.getElementById("host-name").value.trim();
-            const restaurant = document.getElementById("restaurant").value.trim();
-            const rekening = document.getElementById("rekening").value.trim();
-
-            if (host === "" || restaurant === "" || rekening === "") {
-                alert("Semua data wajib diisi");
-                return;
-            }
-
-            const roomData = {
-                roomName: restaurant,
-                host: host,
-                rekening: rekening,
-                roomCode: "QR" + Math.floor(100000 + Math.random() * 900000),
-                users: [host],
-                items: [],
-                tax: 0,
-                discount: 0,
-                fee: 0,
-                locked: false
-            };
-
-            localStorage.setItem("roomData", JSON.stringify(roomData));
-            window.location.href = "room.html";
-        }
-    </script>
+    <script src="js/createroom.js"></script>
 </body>
 
 </html>

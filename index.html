@@ -6,27 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-        }
-
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 122, 0, 0.05) 0%, rgba(249, 249, 249, 0) 70%);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -134,11 +116,13 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-surface dark:bg-surface-dim transition-colors duration-300">
         <div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
             <div class="flex items-center gap-sm">
-                <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">QRoom</span>
+                <span
+                    class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">QRoom</span>
             </div>
 
             <nav class="flex items-center gap-lg">
-                <a href="history.html" class="font-label-md text-label-md text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center gap-xs"><span>History</span></a>
+                <a href="history.html"
+                    class="font-label-md text-label-md text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center gap-xs"><span>History</span></a>
             </nav>
         </div>
     </header>
@@ -154,19 +138,24 @@
             </p>
         </div>
 
-        <div class="w-full max-w-xl bg-surface-container-lowest rounded-3xl shadow-[0px_4px_32px_rgba(0,0,0,0.06)] p-xl flex justify-center items-center relative overflow-hidden group mx-auto">
+        <div
+            class="w-full max-w-xl bg-surface-container-lowest rounded-3xl shadow-[0px_4px_32px_rgba(0,0,0,0.06)] p-xl flex justify-center items-center relative overflow-hidden group mx-auto">
 
-            <div class="w-full max-w-md flex flex-col items-center justify-center p-lg transition-all hover:bg-surface-container-low rounded-2xl">
+            <div
+                class="w-full max-w-md flex flex-col items-center justify-center p-lg transition-all hover:bg-surface-container-low rounded-2xl">
                 <div class="mb-lg bg-primary-fixed p-md rounded-full text-primary">
                     <span class="material-symbols-outlined text-[48px]" data-icon="add_circle">add_circle</span>
                 </div>
-                <button onclick="window.location.href='createroom.html'" class="w-full py-md px-lg bg-primary-container text-on-primary font-label-md text-label-md rounded-2xl shadow-md active:scale-95 transition-transform duration-150 hover:opacity-90">
+                <button onclick="window.location.href='createroom.html'"
+                    class="w-full py-md px-lg bg-primary-container text-on-primary font-label-md text-label-md rounded-2xl shadow-md active:scale-95 transition-transform duration-150 hover:opacity-90">
                     Buat QRoom Baru
                 </button>
-                <p class="mt-sm font-label-sm text-label-sm text-secondary opacity-60">Mulai sesi split bill baru sekarang</p>
+                <p class="mt-sm font-label-sm text-label-sm text-secondary opacity-60">Mulai sesi split bill baru
+                    sekarang</p>
             </div>
 
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-colors">
+            <div
+                class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-colors">
             </div>
         </div>
 
@@ -174,78 +163,51 @@
             <div class="p-lg bg-surface-container-low rounded-2xl flex flex-col gap-sm">
                 <span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
                 <h3 class="font-label-md text-label-md text-on-surface">Kilat</h3>
-                <p class="font-label-sm text-label-sm text-secondary">Hitung totalan cuma dalam hitungan detik tanpa kalkulator.</p>
+                <p class="font-label-sm text-label-sm text-secondary">Hitung totalan cuma dalam hitungan detik tanpa
+                    kalkulator.</p>
             </div>
             <div class="p-lg bg-surface-container-low rounded-2xl flex flex-col gap-sm">
                 <span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
                 <h3 class="font-label-md text-label-md text-on-surface">Akurat</h3>
-                <p class="font-label-sm text-label-sm text-secondary">Sistem pembagian otomatis sampai ke digit rupiah terkecil.</p>
+                <p class="font-label-sm text-label-sm text-secondary">Sistem pembagian otomatis sampai ke digit rupiah
+                    terkecil.</p>
             </div>
             <div class="p-lg bg-surface-container-low rounded-2xl flex flex-col gap-sm">
                 <span class="material-symbols-outlined text-primary" data-icon="share">share</span>
                 <h3 class="font-label-md text-label-md text-on-surface">Sosial</h3>
-                <p class="font-label-sm text-label-sm text-secondary">Bagikan rincian langsung ke grup chat atau sosial media.</p>
+                <p class="font-label-sm text-label-sm text-secondary">Bagikan rincian langsung ke grup chat atau sosial
+                    media.</p>
             </div>
         </div>
 
         <div class="w-full max-w-container-max mt-3xl">
-            <img alt="Students sharing a meal" class="w-full h-64 object-cover rounded-3xl" data-alt="A candid, high-quality photograph of a group of diverse university students laughing and sharing a meal together at a vibrant urban cafe. The lighting is bright and warm, reflecting a modern corporate aesthetic with soft morning sunlight streaming through large windows. The overall atmosphere is energetic, social, and trustworthy, with focus on the genuine human connection over a shared table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPv9nPz5I9_p6yowomIc-Du9uLvel0HHeVIIv36X6bRrbTAx0RfCuuawQOBGV1ZdLGD0E3IHJv7GHLWSMWEHZE25-8YeoUExm2Lexuw3GWlI8bXh4G7jypXiYaPbezms0hplU-kdnhN7OnDT8uomESYva1_4M2laXHXiennr9hLhZUGhT3VrpFeR0sXA67FMfAazbXfcmGWrRyct2GJNiOy8QCcC9OERnnw6Ie4jla7AUJULMN_zyo8mpY2RYb1ji574lazU7oH_s">
+            <img alt="Students sharing a meal" class="w-full h-64 object-cover rounded-3xl"
+                data-alt="A candid, high-quality photograph of a group of diverse university students laughing and sharing a meal together at a vibrant urban cafe. The lighting is bright and warm, reflecting a modern corporate aesthetic with soft morning sunlight streaming through large windows. The overall atmosphere is energetic, social, and trustworthy, with focus on the genuine human connection over a shared table."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPv9nPz5I9_p6yowomIc-Du9uLvel0HHeVIIv36X6bRrbTAx0RfCuuawQOBGV1ZdLGD0E3IHJv7GHLWSMWEHZE25-8YeoUExm2Lexuw3GWlI8bXh4G7jypXiYaPbezms0hplU-kdnhN7OnDT8uomESYva1_4M2laXHXiennr9hLhZUGhT3VrpFeR0sXA67FMfAazbXfcmGWrRyct2GJNiOy8QCcC9OERnnw6Ie4jla7AUJULMN_zyo8mpY2RYb1ji574lazU7oH_s">
         </div>
     </main>
 
-    <footer class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant transition-colors">
-        <div class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
+    <footer
+        class="bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-on-surface-variant transition-colors">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center w-full px-md py-lg gap-md max-w-container-max mx-auto">
             <div class="flex flex-col items-center md:items-start">
                 <span class="font-label-md text-label-md font-bold text-primary mb-1">QRoom</span>
-                <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">© 2026 QRoom. All rights reserved.</p>
+                <p class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant">© 2026 QRoom.
+                    All rights reserved.</p>
             </div>
             <div class="flex gap-lg">
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
-                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Help Center</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                    href="#">Help Center</a>
             </div>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('mousemove', (e) => {
-            const card = document.querySelector('.group.shadow-\\[0px_4px_32px_rgba\\(0\\,0\\,0\\,0\\.06\\)\\]');
-            if (card) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-            }
-        });
-    </script>
-    <script>
-        function joinRoom() {
-            const code = document.getElementById("roomCode").value.trim();
-
-            if (code === "") {
-                alert("Masukkan kode room dulu");
-                return;
-            }
-
-            let roomData = JSON.parse(localStorage.getItem("roomData"));
-
-            if (!roomData) {
-                roomData = {
-                    users: []
-                };
-            }
-
-            roomData.joinCode = code;
-            roomData.users.push("Guest");
-
-            localStorage.setItem("roomData", JSON.stringify(roomData));
-
-            window.location.href = "room.html";
-        }
-    </script>
-
+    <script src="js/index.js"></script>
 </body>
 
 </html>
