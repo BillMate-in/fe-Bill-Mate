@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>BillMate - Riwayat</title>
-    <!-- Menggunakan Tailwind CSS sesuai konfigurasi BillMate -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -68,7 +67,6 @@
 
 <body class="bg-surface flex flex-col min-h-screen">
 
-    <!-- Navbar Candy Orange -->
     <header class="bg-[#F59E57] text-white fixed top-0 left-0 right-0 z-50 px-3 shadow-md">
         <div class="w-full max-w-[1200px] mx-auto py-2 px-md flex justify-between items-center h-16">
             <div class="flex items-center gap-2">
@@ -86,7 +84,6 @@
         </div>
     </header>
 
-    <!-- Main History Frame -->
     <main class="flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-md">
 
         <div class="mb-lg px-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
@@ -97,14 +94,13 @@
                 </div>
                 <p class="text-sm text-secondary mt-1">Lihat kembali riwayat pembagian tagihan makan kamu</p>
             </div>
-            <!-- Tombol Hapus Semua Riwayat -->
+
             <button id="deleteAllBtn" class="flex items-center gap-xs px-md py-sm bg-red-50 hover:bg-red-100 text-red-600 rounded-2xl text-sm font-semibold shadow-sm transition-all active:scale-95">
                 <span class="material-symbols-outlined text-lg">delete_sweep</span>
                 <span>Hapus Semua</span>
             </button>
         </div>
 
-        <!-- Search and Filter Pills Grid Container -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-md mb-lg px-2">
             <div class="md:col-span-8 relative">
                 <span class="material-symbols-outlined absolute text-secondary left-4 top-1/2 -translate-y-1/2">search</span>
@@ -119,10 +115,8 @@
             </div>
         </div>
 
-        <!-- Dynamic Content Target (Wadah Utama untuk renderHistory via JS eksternal Anda) -->
         <div id="historyList" class="flex flex-col gap-sm px-2"></div>
 
-        <!-- Pagination Bar Container -->
         <div class="mt-xl flex justify-center items-center gap-md">
             <button id="prevPage" class="border border-surface-variant rounded-full flex items-center justify-center text-secondary w-10 h-10 hover:bg-surface-container-low transition-all active:scale-95">
                 <span class="material-symbols-outlined">chevron_left</span>
