@@ -9,8 +9,9 @@
 }
 
 .active-pill {
-    background-color: #E98A3A;
-    color: white;
+    background-color: #E98A3A !important;
+    color: white !important;
+    border-color: #E98A3A !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {

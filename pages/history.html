@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="history.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -55,22 +55,6 @@
             }
         }
     </script>
-    <style>
-        .active-pill {
-            background-color: #E98A3A !important;
-            color: white !important;
-            border-color: #E98A3A !important;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
 </head>
 
 <body class="bg-surface flex flex-col min-h-screen">
@@ -105,12 +89,6 @@
                 </div>
                 <p class="text-sm text-secondary mt-1">Lihat kembali riwayat pembagian tagihan makan kamu</p>
             </div>
-
-            <button id="deleteAllBtn"
-                class="flex items-center gap-xs px-md py-sm bg-red-50 hover:bg-red-100 text-red-600 rounded-2xl text-sm font-semibold shadow-sm transition-all active:scale-95">
-                <span class="material-symbols-outlined text-lg">delete_sweep</span>
-                <span>Hapus Semua</span>
-            </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-md mb-lg px-2">
@@ -131,6 +109,10 @@
                     <button id="monthBtn"
                         class="bg-surface-container-lowest border border-surface-variant text-secondary px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap hover:bg-surface-container-low transition-all">30
                         Hari</button>
+                    <button id="deleteAllBtn"
+                        class="flex items-center gap-xs px-md py-sm bg-red-50 hover:bg-red-100 text-red-600 rounded-2xl text-sm font-semibold shadow-sm transition-all active:scale-95">
+                        <span class="material-symbols-outlined text-lg">delete_sweep</span>
+                    </button>
                 </div>
             </div>
         </div>
