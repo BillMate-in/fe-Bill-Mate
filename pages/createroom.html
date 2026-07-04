@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>BillMate - Buat Room</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/createroom.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#584235",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-primary-fixed": "#321200",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-container": "#7A4318",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#F6C49A",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#e2dfde",
+                        "on-primary-fixed-variant": "#9A5926",
+                        "tertiary-fixed": "#e1e2e4",
+                        "on-tertiary-container": "#343739",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "tertiary-fixed-dim": "#c5c6c8",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-secondary-container": "#636262",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#191c1e",
+                        "primary-container": "#E98A3A",
+                        "surface-container-low": "#f3f3f4",
+                        "tertiary": "#5c5f60",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "outline": "#8c7263",
+                        "outline-variant": "#E7CCBA",
+                        "primary": "#B8651C",
+                        "inverse-surface": "#2f3131",
+                        "secondary": "#5f5e5e",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-primary": "#F6C49A",
+                        "tertiary-container": "#9ea0a2",
+                        "on-background": "#1a1c1c",
+                        "surface-tint": "#B8651C",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "primary-fixed": "#FBE3D0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "container-max": "1200px",
+                        "sm": "8px",
+                        "2xl": "48px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "3xl": "64px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+
+    <header class="bg-[#F59E57] text-white shadow-md sticky top-0 z-50">
+        <nav class="w-full max-w-container-max mx-auto py-3 px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2 font-headline-md font-bold text-white cursor-pointer transition-transform active:scale-95"
+                    onclick="window.location.href='index.html'">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 28px; font-variation-settings: 'FILL' 1;">receipt_long</span>
+                    <span>BillMate</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-margin-mobile py-xl bg-surface relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-15">
+            <div class="absolute bg-primary-container rounded-full -top-24 -left-24 w-96 h-96 filter blur-[120px]">
+            </div>
+            <div class="absolute bg-secondary-container rounded-full top-1/2 -right-24 w-64 h-64 filter blur-[100px]">
+            </div>
+        </div>
+
+        <div class="w-full relative max-w-[520px] z-10">
+            <div class="text-center mb-lg" data-aos="fade-down" data-aos-duration="800">
+                <div class="inline-flex items-center justify-center bg-primary-fixed rounded-full mb-sm w-20 h-20">
+                    <span class="material-symbols-outlined text-primary"
+                        style="font-size: 48px; font-variation-settings: 'FILL' 1;">storefront</span>
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Buat Room Baru</h1>
+                <p class="font-body-md text-body-md text-secondary">Atur pesanan makanan kelompok dan ajak teman-temanmu
+                </p>
+            </div>
+
+            <div class="bg-surface-container-lowest border border-outline-variant shadow-md rounded-2xl p-xl"
+                data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                <form action="#" class="space-y-md" novalidate>
+
+                    <div class="space-y-xs">
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="hostName">
+                            <span class="material-symbols-outlined align-middle mr-1"
+                                style="font-size: 18px;">person</span>
+                            Nama Host (Pembuat Room)
+                        </label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">badge</span>
+                            <input
+                                class="w-full pl-12 pr-md py-3 bg-surface border border-surface-variant rounded-xl font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                id="hostName" placeholder="e.g., Aditya Pratama" required type="text">
+                        </div>
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="restaurantName">
+                            <span class="material-symbols-outlined align-middle mr-1"
+                                style="font-size: 18px;">restaurant</span>
+                            Nama Restoran / Rumah Makan
+                        </label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors"
+                                style="font-variation-settings: 'FILL' 1;">storefront</span>
+                            <input
+                                class="w-full pl-12 pr-md py-3 bg-surface border border-surface-variant rounded-xl font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                id="restaurantName" placeholder="e.g., Bakso Pak Kirno" required type="text">
+                        </div>
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="bankName">
+                            <span class="material-symbols-outlined align-middle mr-1"
+                                style="font-size: 18px;">account_balance_wallet</span>
+                            Nama Bank / E-Wallet
+                        </label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">account_balance</span>
+                            <input id="bankName" type="text" placeholder="e.g., Bank BCA, GoPay, OVO"
+                                class="w-full pl-12 pr-md py-3 bg-surface border border-surface-variant rounded-xl font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-xs">
+                        <label class="font-label-md text-label-md text-secondary block ml-1" for="rekening">
+                            <span class="material-symbols-outlined align-middle mr-1"
+                                style="font-size: 18px;">credit_card</span>
+                            Nomor Rekening / Nomor E-Wallet
+                        </label>
+                        <div class="relative group">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors">payments</span>
+                            <input id="rekening" type="text" placeholder="e.g., 1234567890"
+                                class="w-full pl-12 pr-md py-3 bg-surface border border-surface-variant rounded-xl font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-sm bg-primary-fixed text-on-primary-fixed p-md rounded-xl mt-sm">
+                        <span class="material-symbols-outlined text-primary"
+                            style="font-variation-settings: 'FILL' 1; font-size: 24px;">info</span>
+                        <span class="font-label-sm text-label-sm">Sebagai host, hanya kamu yang bisa melakukan
+                            finalisasi perhitungan tagihan pesanan.</span>
+                    </div>
+
+                    <div class="pt-sm space-y-sm">
+                        <button id="btnCreateRoom"
+                            class="w-full py-3.5 bg-primary-container text-on-primary font-label-md text-lg rounded-2xl shadow-md hover:shadow-lg hover:opacity-95 active:scale-[0.98] transition-all flex justify-center items-center gap-sm"
+                            type="button">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                            <span>Buat Room & Mulai Sesi</span>
+                        </button>
+
+                        <a class="w-full flex items-center justify-center gap-xs py-2 text-secondary font-label-md hover:text-primary transition-all group text-decoration-none"
+                            href="index.html">
+                            <span
+                                class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+                            <span>Kembali ke Beranda</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-lg flex flex-col items-center opacity-70" data-aos="fade-up" data-aos-duration="800"
+                data-aos-delay="400">
+                <div class="w-24 h-1 bg-surface-container-high rounded-full mb-md"></div>
+                <p class="font-label-sm text-label-sm text-secondary text-center">
+                    <span class="material-symbols-outlined align-middle" style="font-size: 16px;">groups</span>
+                    Bergabunglah bersama ribuan mahasiswa yang patungan tanpa drama!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#F59E57] text-white border-t border-orange-400 transition-colors mt-auto">
+        <div class="w-full px-md py-md max-w-container-max mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-md">
+                <div class="flex flex-col items-center md:items-start">
+                    <div class="flex items-center gap-xs mb-1">
+                        <span class="material-symbols-outlined"
+                            style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+                        <span class="font-label-md text-label-md font-bold">BillMate</span>
+                    </div>
+                    <p class="font-label-sm text-label-sm opacity-80">© 2026 BillMate. All rights reserved.</p>
+                </div>
+                <div class="flex gap-lg">
+                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Privacy Policy</a>
+                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Terms of Service</a>
+                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Help Center</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
+    <script src="../js/createroom.js"></script>
+</body>
+
+</html>
