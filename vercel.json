@@ -3,6 +3,22 @@
     {
       "source": "/",
       "destination": "/pages/index.html"
+    },
+    {
+      "source": "/createroom",
+      "destination": "/pages/createroom.html"
+    },
+    {
+      "source": "/history",
+      "destination": "/pages/history.html"
+    },
+    {
+      "source": "/room",
+      "destination": "/pages/room.html"
+    },
+    {
+      "source": "/nota",
+      "destination": "/pages/nota.html"
     }
   ]
 }
