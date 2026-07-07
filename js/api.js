@@ -8,7 +8,7 @@
  */
 class BillMateAPI {
     constructor() {
-        this.baseUrl = 'https://billmate-be.sao.dom.my.id/api';
+        this.baseUrl = 'https://be-bill-mate-production.up.railway.app/api';
     }
 
     /**
