@@ -274,7 +274,7 @@ function createItemCardElement(foodName, foodPrice, foodQty, foodUser) {
     const itemCard = document.createElement('div');
     
 
-    itemCard.className = "item-card flex justify-between items-center bg-surface-container-low p-sm rounded-2xl shadow-sm border border-surface-variant/30";
+    itemCard.className = "item-card flex flex-col sm:flex-row justify-between items-start sm:items-center bg-surface-container-low p-md rounded-2xl shadow-sm border border-surface-variant/30 gap-sm w-full";
 
     itemCard.setAttribute('data-name', foodName);
     itemCard.setAttribute('data-price', foodPrice);
@@ -290,7 +290,7 @@ function createItemCardElement(foodName, foodPrice, foodQty, foodUser) {
                 <p class="text-xs text-secondary font-medium item-details-text">${foodUser} • Rp ${parseFloat(foodPrice).toLocaleString('id-ID')}</p>
             </div>
         </div>
-        <div class="flex items-center gap-md pr-sm">
+        <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md pr-xs sm:pr-sm border-t sm:border-t-0 pt-xs sm:pt-0 border-surface-variant/20">
             <span class="font-extrabold text-primary-container bg-primary-fixed/30 px-md py-sm rounded-xl text-xs item-qty-text">x${foodQty}</span>
             
             <!-- Tombol Aksi Kontrol (Edit & Delete) -->

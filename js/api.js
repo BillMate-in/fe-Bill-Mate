@@ -8,8 +8,7 @@
  */
 class BillMateAPI {
     constructor() {
-        // Base URL mengarah ke server Laravel lokal Anda
-        this.baseUrl = 'http://bill-mate.web.id.preview.services/api';
+        this.baseUrl = 'https://billmate-be.sao.dom.my.id/api';
     }
 
     /**
@@ -27,7 +26,7 @@ class BillMateAPI {
             },
             body: JSON.stringify(payload)
         });
-        
+
         return this._handleResponse(response);
     }
 
@@ -60,7 +59,7 @@ class BillMateAPI {
      */
     async _handleResponse(response) {
         const data = await response.json();
-        
+
         // Jika respons tidak berada di rentang HTTP status 2xx (misal 422 atau 500)
         if (!response.ok) {
             // Buat error terstruktur dengan menangkap pesan eror dari Laravel validator
@@ -69,7 +68,7 @@ class BillMateAPI {
             error.response = data; // Tempelkan detail respons eror jika dibutuhkan di UI
             throw error;
         }
-        
+
         return data;
     }
 }

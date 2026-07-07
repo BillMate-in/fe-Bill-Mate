@@ -114,21 +114,28 @@
 
 <body class="flex flex-col min-h-screen">
 
-    <header class="bg-[#F59E57] text-white sticky top-0 p-2 px-md shadow-md z-50">
-        <div class="w-full max-w-container-max mx-auto py-sm px-md">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-sm">
-                    <span class="material-symbols-outlined"
-                        style="font-size: 28px; font-variation-settings: 'FILL' 1;">receipt_long</span>
-                    <span class="font-headline-md text-headline-md font-bold text-white">BillMate</span>
-                </div>
+    <header class="sticky top-0 z-50 bg-[#F59E57] text-white shadow-md">
+        <div class="w-full max-w-container-max mx-auto py-sm px-md flex justify-between items-center h-16">
+            <div class="flex items-center gap-2 font-bold cursor-pointer transition-transform active:scale-95" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1;">receipt_long</span>
+                <span class="text-xl font-bold">BillMate</span>
             </div>
+            <nav class="flex items-center gap-lg">
+                <a href="index.html" class="text-sm font-semibold text-white hover:opacity-80 flex items-center gap-xs transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]">home</span>
+                    <span>Beranda</span>
+                </a>
+                <a href="history.html" class="text-sm font-semibold text-white hover:opacity-80 flex items-center gap-xs transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-[20px]">history</span>
+                    <span>Riwayat</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <main class="flex-grow flex flex-col md:flex-row w-full mx-auto overflow-hidden max-w-[1440px]">
+    <main class="flex-grow flex flex-col lg:flex-row w-full mx-auto max-w-[1440px]">
 
-        <section class="w-full md:w-[60%] p-md md:p-lg bg-surface-container-lowest overflow-y-auto no-scrollbar">
+        <section class="w-full lg:w-[60%] p-md md:p-lg bg-surface-container-lowest">
             <div class="flex flex-col gap-md">
 
                 <div class="flex items-center justify-between">
@@ -149,14 +156,13 @@
                 </div>
 
                 <div class="bg-surface-container-low p-md rounded-2xl flex flex-wrap gap-sm items-end">
-                    <div class="flex-grow min-w-[160px]">
-                        <label class="font-label-sm text-label-sm text-secondary mb-xs block pl-sm">Nama
-                            Makanan/Minuman</label>
+                    <div class="w-full sm:flex-grow md:flex-1 min-w-[160px]">
+                        <label class="font-label-sm text-label-sm text-secondary mb-xs block pl-sm">Nama Makanan/Minuman</label>
                         <input id="foodInput"
                             class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl px-md py-sm font-label-md text-label-md font-medium outline-none focus:ring-2 focus:ring-primary-container"
                             placeholder="e.g., Nasi Goreng Ayam" type="text">
                     </div>
-                    <div class="w-full max-w-none md:max-w-[140px]">
+                    <div class="w-[calc(50%-8px)] sm:w-[140px] flex-grow sm:flex-grow-0">
                         <label class="font-label-sm text-label-sm text-secondary mb-xs block pl-sm">Harga Satuan</label>
                         <div class="relative">
                             <span
@@ -166,18 +172,18 @@
                                 placeholder="0" type="number">
                         </div>
                     </div>
-                    <div class="w-full max-w-none md:max-w-[120px]">
+                    <div class="w-[calc(50%-8px)] sm:w-[130px] flex-grow sm:flex-grow-0">
                         <label class="font-label-sm text-label-sm text-secondary mb-xs block pl-sm">Anggota</label>
                         <select id="userInput"
                             class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl px-md py-sm font-label-md text-label-md outline-none focus:ring-2 focus:ring-primary-container"></select>
                     </div>
-                    <div class="w-full max-w-none md:max-w-[70px]">
+                    <div class="w-[60px] sm:w-[70px]">
                         <label class="font-label-sm text-label-sm text-secondary mb-xs block pl-sm">Qty</label>
                         <input id="qtyInput"
                             class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl font-label-md text-label-md text-on-surface py-sm px-md outline-none focus:ring-2 focus:ring-primary-container"
                             placeholder="1" type="number">
                     </div>
-                    <div class="ml-auto">
+                    <div class="ml-auto sm:ml-0 flex items-end justify-end">
                         <button id="btnAddItem"
                             class="btn-active flex items-center justify-center bg-primary-container text-white rounded-2xl w-12 h-12 shadow-md transition-transform hover:-translate-y-0.5">
                             <span class="material-symbols-outlined"
@@ -202,7 +208,7 @@
         </section>
 
         <aside
-            class="w-full md:w-[40%] bg-surface-container-low p-md md:p-lg flex flex-col gap-md border-t md:border-t-0 md:border-l border-surface-variant/30">
+            class="w-full lg:w-[40%] bg-surface-container-low p-md lg:p-lg flex flex-col gap-md border-t lg:border-t-0 lg:border-l border-surface-variant/30">
 
             <div class="bg-surface-container-lowest p-md rounded-2xl shadow-sm space-y-md">
                 <div>
@@ -271,26 +277,26 @@
         </aside>
     </main>
 
-    <footer class="bg-[#F59E57] text-white border-t border-orange-400 transition-colors">
+    <footer class="bg-[#F59E57] text-white border-t border-orange-400 transition-colors mt-auto">
         <div class="w-full px-md py-md max-w-container-max mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-md">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-md text-center md:text-left">
                 <div class="flex flex-col items-center md:items-start">
                     <div class="flex items-center gap-xs mb-1">
-                        <span class="material-symbols-outlined"
-                            style="font-variation-settings: 'FILL' 1;">receipt_long</span>
-                        <span class="font-label-md text-label-md font-bold">BillMate</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+                        <span class="font-bold">BillMate</span>
                     </div>
-                    <p class="font-label-sm text-label-sm opacity-80">© 2026 BillMate. All rights reserved.</p>
+                    <p class="text-xs opacity-80">© 2026 BillMate. All rights reserved.</p>
                 </div>
-                <div class="flex gap-lg">
-                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Privacy Policy</a>
-                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Terms of Service</a>
-                    <a class="font-label-sm text-label-sm text-white hover:underline" href="#">Help Center</a>
+                <div class="flex flex-wrap justify-center gap-lg text-xs">
+                    <a class="hover:underline" href="#">Privacy Policy</a>
+                    <a class="hover:underline" href="#">Terms of Service</a>
+                    <a class="hover:underline" href="#">Help Center</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="../js/api.js"></script>
     <script src="../js/room.js"></script>
 </body>
 

@@ -4,7 +4,6 @@
         'wght' 400,
         'GRAD' 0,
         'opsz' 24;
-
     vertical-align: middle;
 }
 
@@ -19,7 +18,5 @@
 
 .btn-active:active {
     transform: scale(0.95);
-
-    transition:
-        transform 0.15s ease;
+    transition: transform 0.15s ease;
 }
