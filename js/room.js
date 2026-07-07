@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         userInputSelect.add(defaultOption);
     }
 
+    // Event listener untuk edit member button - DIHAPUS KARENA TIDAK DIPERLUKAN
+
     // =============================================
     // MODAL TAMBAH ANGGOTA
     // =============================================
@@ -118,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userInputSelect.value = trimmedName;
 
         closeAddMemberModal();
+        Toast.success('Anggota baru berhasil ditambahkan!');
     }
 
     if (btnJoinFake) {
@@ -186,7 +189,32 @@ window.recalculateLocalTotals = recalculateLocalTotals;
 
   
     if (btnAddItem && foodInput && priceInput && qtyInput && itemList) {
-        btnAddItem.addEventListener('click', (e) => {
+        
+        // Helper function to show error state
+        function showInputError(input) {
+            input.classList.add('input-error', 'shake-animation');
+            setTimeout(() => {
+                input.classList.remove('shake-animation');
+            }, 500);
+        }
+
+        // Helper function to clear error state
+        function clearInputError(input) {
+            input.classList.remove('input-error');
+        }
+
+        // Clear error on input
+        [foodInput, priceInput, qtyInput].forEach(input => {
+            input.addEventListener('input', () => clearInputError(input));
+            input.addEventListener('focus', () => clearInputError(input));
+        });
+        
+        if (userInputSelect) {
+            userInputSelect.addEventListener('change', () => clearInputError(userInputSelect));
+            userInputSelect.addEventListener('focus', () => clearInputError(userInputSelect));
+        }
+        
+        btnAddItem.addEventListener('click', async (e) => {
             e.preventDefault();
 
             const foodName = foodInput.value.trim();
@@ -196,19 +224,27 @@ window.recalculateLocalTotals = recalculateLocalTotals;
 
            
             if (!foodName) {
-                alert('Mohon isi nama makanan atau minuman!');
+                showInputError(foodInput);
+                await CustomAlert.warning('Mohon isi nama makanan atau minuman!', 'Data Tidak Lengkap');
+                foodInput.focus();
                 return;
             }
             if (foodPrice <= 0) {
-                alert('Harga satuan harus berupa angka lebih besar dari Rp 0!');
+                showInputError(priceInput);
+                await CustomAlert.warning('Harga satuan harus berupa angka lebih besar dari Rp 0!', 'Harga Tidak Valid');
+                priceInput.focus();
                 return;
             }
             if (foodQty <= 0) {
-                alert('Kuantitas (Qty) minimal harus bernilai 1!');
+                showInputError(qtyInput);
+                await CustomAlert.warning('Kuantitas (Qty) minimal harus bernilai 1!', 'Qty Tidak Valid');
+                qtyInput.focus();
                 return;
             }
             if (!foodUser) {
-                alert('Mohon pilih nama anggota pemesan terlebih dahulu!');
+                showInputError(userInputSelect);
+                await CustomAlert.warning('Mohon pilih nama anggota pemesan terlebih dahulu!', 'Pilih Anggota');
+                userInputSelect.focus();
                 return;
             }
 
@@ -220,6 +256,7 @@ window.recalculateLocalTotals = recalculateLocalTotals;
             priceInput.value = '';
             qtyInput.value = '1';
 
+            Toast.success('Pesanan berhasil ditambahkan!');
             recalculateLocalTotals();
 
         });
@@ -238,7 +275,7 @@ window.recalculateLocalTotals = recalculateLocalTotals;
         const members = Array.from(userInputSelect.options).map(option => option.value);
 
         if (members.length === 0) {
-            alert('Gagal mengunci room. Minimal harus ada 1 anggota di dalam room!');
+            await CustomAlert.error('Gagal mengunci room. Minimal harus ada 1 anggota di dalam room!', 'Tidak Ada Anggota');
             return;
         }
 
@@ -257,9 +294,16 @@ window.recalculateLocalTotals = recalculateLocalTotals;
         });
 
         if (items.length === 0) {
-            alert('Gagal mengunci room. Harap masukkan minimal 1 menu pesanan!');
+            await CustomAlert.error('Gagal mengunci room. Harap masukkan minimal 1 menu pesanan!', 'Tidak Ada Pesanan');
             return;
         }
+
+        const confirmed = await CustomAlert.confirm(
+            'Setelah dikunci, room tidak bisa diedit lagi. Apakah Anda yakin ingin melanjutkan?',
+            'Konfirmasi Kunci Room'
+        );
+        
+        if (!confirmed) return;
 
         const taxPercent = parseFloat(document.getElementById('taxInput').value) || 0;
         const discount = parseFloat(document.getElementById('discountInput').value) || 0;
@@ -292,10 +336,6 @@ window.recalculateLocalTotals = recalculateLocalTotals;
         `;
 
         try {
-            // ==========================================
-            // IMPLEMENTASI BARU: Memanggil API Client Abstraksi
-            // ==========================================
-            // Kita tidak lagi memanggil fetch mentah di sini, melainkan menyerahkannya ke kelas servis global.
             const result = await window.billMateAPI.calculateSplitBill(payload);
 
             if (result && result.success) {
@@ -315,16 +355,19 @@ window.recalculateLocalTotals = recalculateLocalTotals;
                 // KEAMANAN RULE 1: Hapus total session storage agar room aktif tidak bisa dimasuki kembali
                 sessionStorage.clear();
                 
-                // KEAMANAN RULE 2: Gunakan .replace() untuk mencegah pengguna menekan tombol "Back" di browser
-                window.location.replace('nota.html');
+                Toast.success('Room berhasil dikunci! Mengalihkan ke nota...');
+                
+                setTimeout(() => {
+                    // KEAMANAN RULE 2: Gunakan .replace() untuk mencegah pengguna menekan tombol "Back" di browser
+                    window.location.replace('nota.html');
+                }, 1500);
             } else {
-                alert('Gagal menghitung: Format respons server tidak valid.');
+                await CustomAlert.error('Gagal menghitung: Format respons server tidak valid.', 'Error Server');
                 resetLockButton(lockRoomBtn);
             }
         } catch (error) {
             console.error('API Error:', error);
-            // Menangkap pesan error dari validasi Laravel (HTTP 422) atau kegagalan jaringan secara terpadu
-            alert('Gagal terhubung ke server Laravel: ' + error.message);
+            await CustomAlert.error('Gagal terhubung ke server Laravel: ' + error.message, 'Error Koneksi');
             resetLockButton(lockRoomBtn);
         }
     });
@@ -338,30 +381,122 @@ function resetLockButton(button) {
     `;
 }
 
+let _editTargetCard = null;
+
+function openEditItemModal(card) {
+    const modal = document.getElementById('editItemModal');
+    if (!modal) return;
+    _editTargetCard = card;
+
+    document.getElementById('editFoodName').value  = card.getAttribute('data-name')  || '';
+    document.getElementById('editFoodPrice').value = card.getAttribute('data-price') || '';
+    document.getElementById('editFoodQty').value   = card.getAttribute('data-qty')   || '1';
+
+    const errMsg = document.getElementById('editErrorMsg');
+    errMsg.classList.add('hidden');
+    errMsg.textContent = '';
+
+    modal.classList.remove('hidden');
+
+    const cardEl = modal.querySelector('div[style]');
+    if (cardEl) {
+        cardEl.style.animation = 'none';
+        cardEl.offsetHeight;
+        cardEl.style.animation = '';
+    }
+    setTimeout(() => document.getElementById('editFoodName').focus(), 50);
+}
+
+function closeEditItemModal() {
+    const modal = document.getElementById('editItemModal');
+    if (modal) modal.classList.add('hidden');
+    _editTargetCard = null;
+}
+
+function confirmEditItemAction() {
+    if (!_editTargetCard) return;
+
+    const nameVal  = document.getElementById('editFoodName').value.trim();
+    const priceVal = parseFloat(document.getElementById('editFoodPrice').value) || 0;
+    const qtyVal   = parseInt(document.getElementById('editFoodQty').value) || 0;
+    const errMsg   = document.getElementById('editErrorMsg');
+
+    if (!nameVal) {
+        errMsg.textContent = 'Nama makanan/minuman tidak boleh kosong!';
+        errMsg.classList.remove('hidden');
+        document.getElementById('editFoodName').focus();
+        return;
+    }
+    if (priceVal <= 0) {
+        errMsg.textContent = 'Harga satuan harus lebih besar dari Rp 0!';
+        errMsg.classList.remove('hidden');
+        document.getElementById('editFoodPrice').focus();
+        return;
+    }
+    if (qtyVal <= 0) {
+        errMsg.textContent = 'Jumlah pesanan minimal bernilai 1!';
+        errMsg.classList.remove('hidden');
+        document.getElementById('editFoodQty').focus();
+        return;
+    }
+
+    const currentUser = _editTargetCard.getAttribute('data-user');
+
+    _editTargetCard.setAttribute('data-name',  nameVal);
+    _editTargetCard.setAttribute('data-price', priceVal);
+    _editTargetCard.setAttribute('data-qty',   qtyVal);
+
+    _editTargetCard.querySelector('.item-name-text').textContent    = nameVal;
+    _editTargetCard.querySelector('.item-details-text').textContent = `${currentUser} • Rp ${priceVal.toLocaleString('id-ID')}`;
+    _editTargetCard.querySelector('.item-qty-text').textContent     = `x${qtyVal}`;
+
+    if (typeof window.recalculateLocalTotals === 'function') {
+        window.recalculateLocalTotals();
+    }
+
+    closeEditItemModal();
+    Toast.success('Pesanan berhasil diubah!');
+}
+
+(function initEditModal() {
+    const confirmBtn = document.getElementById('confirmEditItem');
+    const cancelBtn  = document.getElementById('cancelEditItem');
+    const backdrop   = document.getElementById('editModalBackdrop');
+
+    if (confirmBtn) confirmBtn.addEventListener('click', confirmEditItemAction);
+    if (cancelBtn)  cancelBtn.addEventListener('click', closeEditItemModal);
+    if (backdrop)   backdrop.addEventListener('click', closeEditItemModal);
+
+    ['editFoodName','editFoodPrice','editFoodQty'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter')  { e.preventDefault(); confirmEditItemAction(); }
+            if (e.key === 'Escape') closeEditItemModal();
+        });
+    });
+})();
+
 function createItemCardElement(foodName, foodPrice, foodQty, foodUser) {
     const itemCard = document.createElement('div');
-    
 
     itemCard.className = "item-card flex flex-col sm:flex-row justify-between items-start sm:items-center bg-surface-container-low p-md rounded-2xl shadow-sm border border-surface-variant/30 gap-sm w-full";
 
-    itemCard.setAttribute('data-name', foodName);
+    itemCard.setAttribute('data-name',  foodName);
     itemCard.setAttribute('data-price', foodPrice);
-    itemCard.setAttribute('data-qty', foodQty);
-    itemCard.setAttribute('data-user', foodUser);
-    
+    itemCard.setAttribute('data-qty',   foodQty);
+    itemCard.setAttribute('data-user',  foodUser);
+
     itemCard.innerHTML = `
         <div class="flex items-center gap-sm">
             <span class="material-symbols-outlined text-primary-container bg-primary-fixed/20 p-sm rounded-xl">restaurant</span>
             <div>
-                <!-- Menggunakan penanda class khusus agar teks mudah dimanipulasi saat proses EDIT -->
                 <h4 class="font-bold text-on-surface text-sm item-name-text">${foodName}</h4>
                 <p class="text-xs text-secondary font-medium item-details-text">${foodUser} • Rp ${parseFloat(foodPrice).toLocaleString('id-ID')}</p>
             </div>
         </div>
         <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-md pr-xs sm:pr-sm border-t sm:border-t-0 pt-xs sm:pt-0 border-surface-variant/20">
             <span class="font-extrabold text-primary-container bg-primary-fixed/30 px-md py-sm rounded-xl text-xs item-qty-text">x${foodQty}</span>
-            
-            <!-- Tombol Aksi Kontrol (Edit & Delete) -->
             <div class="flex items-center gap-xs">
                 <button class="btn-edit text-secondary hover:text-primary-container p-xs transition-colors" title="Edit Pesanan">
                     <span class="material-symbols-outlined text-base">edit</span>
@@ -374,14 +509,18 @@ function createItemCardElement(foodName, foodPrice, foodQty, foodUser) {
     `;
 
     const deleteBtn = itemCard.querySelector('.btn-delete');
-    deleteBtn.addEventListener('click', (e) => {
+    deleteBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const currentName = itemCard.getAttribute('data-name');
-        
-        if (confirm(`Apakah Anda yakin ingin menghapus pesanan "${currentName}"?`)) {
-            
-            itemCard.remove();
 
+        const confirmed = await CustomAlert.confirm(
+            `Apakah Anda yakin ingin menghapus pesanan "${currentName}"?`,
+            'Konfirmasi Hapus'
+        );
+
+        if (confirmed) {
+            itemCard.remove();
+            Toast.success('Pesanan berhasil dihapus!');
             if (typeof window.recalculateLocalTotals === 'function') {
                 window.recalculateLocalTotals();
             }
@@ -391,47 +530,7 @@ function createItemCardElement(foodName, foodPrice, foodQty, foodUser) {
     const editBtn = itemCard.querySelector('.btn-edit');
     editBtn.addEventListener('click', (e) => {
         e.preventDefault();
-
-        
-        const currentName = itemCard.getAttribute('data-name');
-        const currentPrice = itemCard.getAttribute('data-price');
-        const currentQty = itemCard.getAttribute('data-qty');
-        const currentUser = itemCard.getAttribute('data-user');
-
-        const newName = prompt('Ubah nama makanan/minuman:', currentName);
-        if (newName === null) return; 
-        if (newName.trim() === '') {
-            alert('Nama makanan/minuman tidak boleh kosong!');
-            return;
-        }
-
-        const newPriceRaw = prompt('Ubah harga satuan (Rp):', currentPrice);
-        if (newPriceRaw === null) return;
-        const newPrice = parseFloat(newPriceRaw) || 0;
-        if (newPrice <= 0) {
-            alert('Harga satuan harus berupa angka lebih besar dari Rp 0!');
-            return;
-        }
-
-        const newQtyRaw = prompt('Ubah jumlah pesanan (Qty):', currentQty);
-        if (newQtyRaw === null) return;
-        const newQty = parseInt(newQtyRaw) || 1;
-        if (newQty <= 0) {
-            alert('Jumlah pesanan minimal bernilai 1!');
-            return;
-        }
-
-        itemCard.setAttribute('data-name', newName.trim());
-        itemCard.setAttribute('data-price', newPrice);
-        itemCard.setAttribute('data-qty', newQty);
-
-        itemCard.querySelector('.item-name-text').textContent = newName.trim();
-        itemCard.querySelector('.item-details-text').textContent = `${currentUser} • Rp ${newPrice.toLocaleString('id-ID')}`;
-        itemCard.querySelector('.item-qty-text').textContent = `x${newQty}`;
-
-        if (typeof window.recalculateLocalTotals === 'function') {
-            window.recalculateLocalTotals();
-        }
+        openEditItemModal(itemCard);
     });
 
     return itemCard;

@@ -11,12 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="../css/nota.css">
+  <link rel="stylesheet" href="../css/custom-alerts.css">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
-          "colors": {
+          colors: {
             "surface-variant": "#e2e2e2",
             "surface": "#f9f9f9",
             "on-primary-container": "#7A4318",
@@ -25,31 +26,31 @@
             "surface-container-low": "#f3f3f4",
             "surface-container-lowest": "#ffffff",
             "outline-variant": "#E7CCBA",
-            "primary": "#B8651C",
-            "secondary": "#5f5e5e",
+            primary: "#B8651C",
+            secondary: "#5f5e5e",
             "on-surface": "#1a1c1c",
             "primary-fixed": "#FBE3D0"
           },
-          "borderRadius": {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
             "2xl": "1rem",
-            "full": "9999px"
+            full: "9999px"
           },
-          "spacing": {
-            "base": "4px",
-            "xl": "32px",
+          spacing: {
+            base: "4px",
+            xl: "32px",
             "container-max": "1200px",
-            "sm": "8px",
+            sm: "8px",
             "2xl": "48px",
             "margin-mobile": "16px",
-            "md": "16px",
-            "xs": "4px",
+            md: "16px",
+            xs: "4px",
             "3xl": "64px",
-            "gutter": "16px",
+            gutter: "16px",
             "margin-desktop": "32px",
-            "lg": "24px"
+            lg: "24px"
           }
         }
       }
@@ -57,7 +58,7 @@
   </script>
 </head>
 
-<body class="bg-surface flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen" style="background-color:#f9f9f9; background-image: radial-gradient(ellipse at 10% 10%, rgba(233,138,58,0.12) 0%, transparent 50%), radial-gradient(ellipse at 90% 85%, rgba(184,101,28,0.09) 0%, transparent 50%), url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E98A3A' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/svg%3E\");">
 
     <header class="sticky top-0 z-50 bg-[#F59E57] text-white shadow-md">
         <div class="w-full max-w-container-max mx-auto py-sm px-md flex justify-between items-center h-16">
@@ -68,7 +69,11 @@
 
         </div>
     </header>
-  <main class="w-full max-w-[480px] mx-auto px-margin-mobile pt-lg pb-3xl flex-grow">
+  <main class="w-full max-w-[480px] mx-auto px-margin-mobile pt-lg pb-3xl flex-grow relative">
+    <div class="pointer-events-none fixed inset-0 -z-10">
+      <div style="position:absolute;top:-80px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(233,138,58,0.12) 0%,transparent 70%);"></div>
+      <div style="position:absolute;bottom:60px;left:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(251,227,208,0.4) 0%,transparent 70%);"></div>
+    </div>
 
     <div class="flex flex-col items-center text-center mb-lg">
       <div
@@ -168,6 +173,7 @@
       </button>
 
       <button
+        onclick="window.location.href='history.html'"
         class="w-full bg-primary-fixed text-on-primary-container font-semibold py-3 rounded-2xl shadow-sm hover:bg-outline-variant transition-all flex items-center justify-center gap-xs border border-primary-container">
         <span class="material-symbols-outlined text-lg">history</span>
         <span>Lihat Riwayat Room</span>
@@ -198,6 +204,7 @@
             </div>
         </div>
     </footer>
+  <script src="../js/custom-alerts.js"></script>
   <script src="../js/nota.js"></script>
 </body>
 

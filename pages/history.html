@@ -10,46 +10,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/history.css">
+    <link rel="stylesheet" href="../css/custom-alerts.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
+                    colors: {
                         "surface-variant": "#e2e2e2",
-                        "surface": "#f9f9f9",
+                        surface: "#f9f9f9",
                         "on-primary-container": "#7A4318",
                         "on-primary": "#ffffff",
                         "primary-container": "#E98A3A",
                         "surface-container-low": "#f3f3f4",
                         "surface-container-lowest": "#ffffff",
                         "outline-variant": "#E7CCBA",
-                        "primary": "#B8651C",
-                        "secondary": "#5f5e5e",
+                        primary: "#B8651C",
+                        secondary: "#5f5e5e",
                         "on-surface": "#1a1c1c",
                         "primary-fixed": "#FBE3D0"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
                         "2xl": "1rem",
-                        "custom": "0.75rem",
-                        "full": "9999px"
+                        custom: "0.75rem",
+                        full: "9999px"
                     },
-                    "spacing": {
-                        "base": "4px",
-                        "xl": "32px",
+                    spacing: {
+                        base: "4px",
+                        xl: "32px",
                         "container-max": "1200px",
-                        "sm": "8px",
+                        sm: "8px",
                         "2xl": "48px",
                         "margin-mobile": "16px",
-                        "md": "16px",
-                        "xs": "4px",
+                        md: "16px",
+                        xs: "4px",
                         "3xl": "64px",
-                        "gutter": "16px",
+                        gutter: "16px",
                         "margin-desktop": "32px",
-                        "lg": "24px"
+                        lg: "24px"
                     }
                 }
             }
@@ -57,7 +58,7 @@
     </script>
 </head>
 
-<body class="bg-surface flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen" style="background-color:#f9f9f9; background-image: radial-gradient(ellipse at 5% 5%, rgba(233,138,58,0.11) 0%, transparent 45%), radial-gradient(ellipse at 95% 90%, rgba(184,101,28,0.08) 0%, transparent 45%), url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E98A3A' fill-opacity='0.028'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");">
 
     <header class="sticky top-0 z-50 bg-[#F59E57] text-white shadow-md">
         <div class="w-full max-w-container-max mx-auto py-sm px-md flex justify-between items-center h-16">
@@ -74,7 +75,11 @@
         </div>
     </header>
 
-    <main class="flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-md">
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-md relative">
+        <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+            <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(233,138,58,0.10) 0%,transparent 70%);"></div>
+            <div style="position:absolute;bottom:-80px;left:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(251,227,208,0.35) 0%,transparent 70%);"></div>
+        </div>
 
         <div class="mb-lg px-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
             <div>
@@ -147,6 +152,7 @@
         </div>
     </footer>
 
+    <script src="../js/custom-alerts.js"></script>
     <script src="../js/history.js"></script>
 </body>
 

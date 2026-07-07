@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
   const rawBillData = localStorage.getItem('calculatedBill');
 
   if (!rawBillData) {
-    alert('Riwayat transaksi tidak ditemukan. Silakan buat rincian baru terlebih dahulu!');
+    await CustomAlert.error('Riwayat transaksi tidak ditemukan. Silakan buat rincian baru terlebih dahulu!', 'Data Tidak Ditemukan');
     window.location.href = 'index.html';
     return;
   }
