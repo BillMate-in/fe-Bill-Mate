@@ -63,24 +63,92 @@ document.addEventListener('DOMContentLoaded', () => {
         userInputSelect.add(defaultOption);
     }
 
-    if (btnJoinFake && userInputSelect) {
+    // =============================================
+    // MODAL TAMBAH ANGGOTA
+    // =============================================
+    const addMemberModal   = document.getElementById('addMemberModal');
+    const newMemberInput   = document.getElementById('newMemberInput');
+    const memberErrorMsg   = document.getElementById('memberErrorMsg');
+    const confirmAddMember = document.getElementById('confirmAddMember');
+    const cancelAddMember  = document.getElementById('cancelAddMember');
+    const modalBackdrop    = document.getElementById('modalBackdrop');
+
+    function openAddMemberModal() {
+        if (!addMemberModal) return;
+        newMemberInput.value = '';
+        memberErrorMsg.classList.add('hidden');
+        memberErrorMsg.textContent = '';
+        addMemberModal.classList.remove('hidden');
+        // Re-trigger animasi setiap kali modal dibuka
+        const card = addMemberModal.querySelector('div[style]');
+        if (card) {
+            card.style.animation = 'none';
+            card.offsetHeight; // reflow
+            card.style.animation = '';
+        }
+        setTimeout(() => newMemberInput.focus(), 50);
+    }
+
+    function closeAddMemberModal() {
+        if (!addMemberModal) return;
+        addMemberModal.classList.add('hidden');
+    }
+
+    function confirmAddMemberAction() {
+        const trimmedName = newMemberInput.value.trim();
+
+        if (!trimmedName) {
+            memberErrorMsg.textContent = 'Nama anggota tidak boleh kosong!';
+            memberErrorMsg.classList.remove('hidden');
+            newMemberInput.focus();
+            return;
+        }
+
+        // Validasi duplikasi
+        const existingMembers = Array.from(userInputSelect.options).map(opt => opt.value.toLowerCase());
+        if (existingMembers.includes(trimmedName.toLowerCase())) {
+            memberErrorMsg.textContent = 'Nama anggota tersebut sudah ada di dalam room!';
+            memberErrorMsg.classList.remove('hidden');
+            newMemberInput.focus();
+            return;
+        }
+
+        const option = new Option(trimmedName, trimmedName);
+        userInputSelect.add(option);
+        userInputSelect.value = trimmedName;
+
+        closeAddMemberModal();
+    }
+
+    if (btnJoinFake) {
         btnJoinFake.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault();
+            openAddMemberModal();
+        });
+    }
 
-            const newMemberName = prompt('Masukkan nama anggota baru:');
-            if (!newMemberName || newMemberName.trim() === '') return;
-            const trimmedName = newMemberName.trim();
+    if (confirmAddMember) {
+        confirmAddMember.addEventListener('click', confirmAddMemberAction);
+    }
 
-            // Validasi duplikasi: Mencegah nama yang sama dimasukkan dua kali
-            const existingMembers = Array.from(userInputSelect.options).map(opt => opt.value.toLowerCase());
-            if (existingMembers.includes(trimmedName.toLowerCase())) {
-                alert('Nama anggota tersebut sudah ada di dalam room!');
-                return;
+    if (cancelAddMember) {
+        cancelAddMember.addEventListener('click', closeAddMemberModal);
+    }
+
+    // Tutup modal saat klik backdrop
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeAddMemberModal);
+    }
+
+    // Konfirmasi dengan tombol Enter
+    if (newMemberInput) {
+        newMemberInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                confirmAddMemberAction();
             }
-
-            const option = new Option(trimmedName, trimmedName);
-            userInputSelect.add(option);
-            userInputSelect.value = trimmedName; 
+            // Tutup dengan Escape
+            if (e.key === 'Escape') closeAddMemberModal();
         });
     }
 
