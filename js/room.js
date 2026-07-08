@@ -176,9 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tax').textContent = `Rp ${taxAmount.toLocaleString('id-ID')}`;
         document.getElementById('fees').textContent = `Rp ${extraFees.toLocaleString('id-ID')}`;
         document.getElementById('grandTotal').textContent = `Rp ${Math.max(0, grandTotal).toLocaleString('id-ID')}`;
-
-window.recalculateLocalTotals = recalculateLocalTotals;
     }
+
+    window.recalculateLocalTotals = recalculateLocalTotals;
 
     ['taxInput', 'discountInput', 'extraFee'].forEach(id => {
         const inputElement = document.getElementById(id);

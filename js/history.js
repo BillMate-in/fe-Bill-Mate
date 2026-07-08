@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function deleteHistoryItem(localIndex) {
         const pageStartIndex = (currentPage - 1) * itemsPerPage;
-        const itemToDelete = filteredData[localIndex];
+        const itemToDelete = filteredData[pageStartIndex + localIndex];
         
         const actualIndex = historyData.findIndex(item => 
             item.transactionId === itemToDelete.transactionId && 

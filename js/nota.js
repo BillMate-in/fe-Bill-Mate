@@ -1,23 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
 
-  const copyButton = document.querySelector('.copy-btn');
-
-  if (!copyButton) return;
-
-  copyButton.addEventListener('click', () => {
-
-    const icon = copyButton.querySelector('.material-symbols-outlined');
-
-    if (!icon) return;
-
-    icon.textContent = 'check';
-
-    setTimeout(() => {
-      icon.textContent = 'content_copy';
-    }, 1500);
-  });
-
-});
 
 
 
@@ -34,16 +15,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const calculatedBill = JSON.parse(rawBillData);
 
- 
+
   const txIdElement = document.querySelector('.tracking-wider').nextElementSibling;
   if (txIdElement) {
     txIdElement.textContent = calculatedBill.transactionId || '#BM-2026-0000';
   }
 
-  
-  document.getElementById('transactionDate').textContent = calculatedBill.date || date('M d, Y');
 
- 
+  document.getElementById('transactionDate').textContent = calculatedBill.date || new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' });
+
+
   const summary = calculatedBill.summary;
   document.getElementById('subtotalBill').textContent = `Rp ${summary.totalBaseCost.toLocaleString('id-ID')}`;
   document.getElementById('taxBill').textContent = `Rp ${summary.totalTax.toLocaleString('id-ID')}`;
@@ -54,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const transfer = calculatedBill.transferInfo;
   if (transfer && transfer.paymentOptions && transfer.paymentOptions.length > 0) {
-    
+
     const primaryOption = transfer.paymentOptions[0];
     document.getElementById('hostTransfer').textContent = `Transfer ke Host (${transfer.hostName})`;
     document.getElementById('rekeningText').textContent = `${primaryOption.provider} - ${primaryOption.accountNumber}`;
@@ -87,8 +68,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <span>Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
         </div>
       `;
-    }); 
-    
+    });
+
     let adjustmentsHtml = '';
     if (member.taxShare > 0) {
       adjustmentsHtml += `
@@ -134,16 +115,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (copyButton && rekeningText) {
     copyButton.addEventListener('click', async (e) => {
       e.preventDefault();
-      
+
       const rawText = rekeningText.textContent.trim();
-      
+
       // Trik Regex/Split: Ekstrak hanya nomor rekeningnya saja (misal "BCA - 1234567" menjadi "1234567")
       const accountNumber = rawText.includes(' - ') ? rawText.split(' - ')[1].trim() : rawText;
 
       try {
         // Menyalin nomor rekening yang bersih ke sistem clipboard OS pengguna secara asinkron
         await navigator.clipboard.writeText(accountNumber);
-        
+
         // Mengubah ikon visual menjadi centang sementara sebagai tanda sukses menyalin
         const icon = copyButton.querySelector('.material-symbols-outlined');
         if (icon) {
@@ -164,14 +145,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (whatsappBtn && calculatedBill) {
     whatsappBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const restaurantName = sessionStorage.getItem('restaurant') || 'restaurant(?)';
+
       const summary = calculatedBill.summary;
       const transfer = calculatedBill.transferInfo;
       const primaryOption = transfer?.paymentOptions?.[0];
 
       //Pesan Otomatis untuk WA
       let textMessage = `*🧾 NOTA DIGITAL SPLIT-BILL - ${calculatedBill.restaurantName.toUpperCase()}*\n`;
-      textMessage += `ID Transaksi: _${calculatedBill.transactionId}_\sn`;
+      textMessage += `ID Transaksi: _${calculatedBill.transactionId}_\n`;
       textMessage += `Tanggal: _${calculatedBill.date}_\n`;
       textMessage += `===================================\n\n`;
 
@@ -198,7 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Melakukan encode URL-safe string menggunakan encodeURIComponent agar karakter spasi dan simbol dapat dikirim dengan selamat
       const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(textMessage)}`;
-      
+
       // Buka API WhatsApp pada tab peramban baru
       window.open(waUrl, '_blank');
     });
@@ -216,4 +197,4 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.location.href = 'history.html';
     });
   }
-  });
+});
